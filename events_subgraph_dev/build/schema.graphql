@@ -1,0 +1,17 @@
+type AdminUpdated @entity {
+  id: ID!
+  oldAdmin: Bytes! # address
+  newAdmin: Bytes! # address
+}
+
+type ImplementationUpdated @entity {
+  id: ID!
+  oldImplementation: Bytes! # address
+  newImplementation: Bytes! # address
+}
+
+type PendingImplementationUpdated @entity {
+  id: ID!
+  oldPendingImplementation: Bytes! # address
+  newPendingImplementation: Bytes! # address
+}

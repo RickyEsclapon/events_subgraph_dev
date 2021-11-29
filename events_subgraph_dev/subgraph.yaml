@@ -1,0 +1,30 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: GraphProxy
+    network: mainnet
+    source:
+      address: "0xadca0dd4729c8ba3acf3e99f3a9f471ef37b6825"
+      abi: GraphProxy
+      startBlock: 11446781
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - AdminUpdated
+        - ImplementationUpdated
+        - PendingImplementationUpdated
+      abis:
+        - name: GraphProxy
+          file: ./abis/GraphProxy.json
+      eventHandlers:
+        - event: AdminUpdated(indexed address,indexed address)
+          handler: handleAdminUpdated
+        - event: ImplementationUpdated(indexed address,indexed address)
+          handler: handleImplementationUpdated
+        - event: PendingImplementationUpdated(indexed address,indexed address)
+          handler: handlePendingImplementationUpdated
+      file: ./src/mapping.ts
